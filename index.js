@@ -2,9 +2,10 @@ const Employee = require('./lib/employee')
 const Manager = require('./lib/manager')
 const Engineer = require('./lib/engineer')
 const Intern = require('./lib/intern')
-const Inquirer = require('inquirer');
+const inquirer = require('inquirer');
+const fs = require('fs')
 
-Inquirer
+inquirer
     .prompt([
         {
             type: 'input',
@@ -27,7 +28,19 @@ Inquirer
             message: 'What is the office number for the manager?',
         },
     ])
-    .then()
+    .then(data => {
+        const teamManager = new Manager(data.name,data.id,data.email,data.officenumber)
+    })
+    .then(()=> {
+        inquirer.prompt([
+            {
+                type: 'list',
+                name: 'membertype',
+                message: 'Which type of team member would you like to add?',
+                choices: ['engineer','intern','I am finished adding members']
+            },
+        ])
+    })
 
 
 
