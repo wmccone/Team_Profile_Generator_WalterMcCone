@@ -39,6 +39,12 @@ inquirer
                 message: 'Which type of team member would you like to add?',
                 choices: ['engineer','intern','I am finished adding members']
             },
+            {
+                type: 'list',
+                name: 'membertype',
+                message: 'Which type of team member would you like to add?',
+                choices: ['engineer','intern','I am finished adding members']
+            },
         ])
     })
 
