@@ -1,7 +1,7 @@
-const employee = require('./lib/employee')
-const manager = require('./lib/manager')
-const engineer = require('./lib/engineer')
-const intern = require('./lib/intern')
+const Employee = require('./lib/employee')
+const Manager = require('./lib/manager')
+const Engineer = require('./lib/engineer')
+const Intern = require('./lib/intern')
 const inquirer = require('inquirer');
 const inquirerTemplates = require ('./src/inquirertemplates')
 const htmlTemplates = require('./src/htmltemplate')
@@ -67,7 +67,7 @@ const employeeType = () => {
                     break;
                 //If the user chooses the finished option, the program will begin the process of printing the html
                 default:
-                    printContent()
+                    writeFile()
                     break;
             }
         })
@@ -143,31 +143,62 @@ const internQuestions = () => {
 // This function will write the content to HTML
 const printContent = () => {
     //This for loop will iterate through the objects in the employee array
+    // let htmlTemp = `<!DOCTYPE html>
+    // <html lang="en">
+    // <head>
+    //     <meta charset="UTF-8">
+    //     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    //     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    //     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    //     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
+    //     <title>Employee Directory</title>
+        
+    // </head>
+    // <body>`;
+    const templateArray = [];
+    templateArray.push(`<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
+        <title>Employee Directory</title>
+        
+    </head>
+    <body>`)
+    //Brings the base HTML template over from the HTML template file
     for (let i = 0; i<employeesArray.length;i++){
         // let roleData = employeesArray[i].getRole()
-        //Brings the base HTML template over from the HTML template file
-        const htmlTemp = htmlTemplates.htmlTemp;
-
     //This switch will take the Role from each object in the array and run a card builder on it
         switch(employeesArray[i].getRole()){
             case "Manager":
-                htmlTemplates.managerCard(employeesArray[i])
+                templateArray.push(htmlTemplates.managerCard(employeesArray[i]))
+                console.log(htmlTemplates.managerCard(employeesArray[i]))
                 break;
             case "Engineer":
-                htmlTemplates.engineerCard(employeesArray[i])
+                templateArray.push(htmlTemplates.engineerCard(employeesArray[i]))
                 break;
             case "Intern":
-                htmlTemplates.internCard(employeesArray[i])
+                templateArray.push(htmlTemplates.internCard(employeesArray[i]))
                 break;
             default:
                 console.log('There was an error with the HTML creation')
-                break;
+                break; 
+            
         }
+        // return htmlTemp
     }
+    // Collect the html into one template literal
+    
+    templateArray.push(`</body>`)
+    const finalTemplate = templateArray.join('')
+    return finalTemplate
 }
 
-const writeFile = (data) => {
-    fs.writeFile(`${employeesArray[1].name}team.html`, htmlTemp.generateHtml(data), (err) =>
+const writeFile = () => {
+    fs.writeFile(`${employeesArray[0].name}team.html`, printContent(), (err) =>
     err ? console.log(err) : console.log("success")
 );
 }
