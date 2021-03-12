@@ -51,8 +51,6 @@ const fs = require('fs')
 
 
 
-const endProgram = false;
-
 function init() {
 //Welcome message
     console.log("Welcome to the Team Profile generator, lets build a team!")

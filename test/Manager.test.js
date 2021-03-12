@@ -16,7 +16,7 @@ describe("Manager", () => {
         it("should return the Email written on the class", () => {
             const winston = new Manager("Winston",4,"winston@gmail.com",5125545554)
 
-            expect(winston.getofficeNumber()).toEqual("5125545554")
+            expect(winston.getofficeNumber()).toEqual(5125545554)
         });
     });
     describe("getRecord", () => {
