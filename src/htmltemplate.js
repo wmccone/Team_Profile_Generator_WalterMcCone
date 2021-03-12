@@ -11,7 +11,8 @@ const htmlTemp = `<!DOCTYPE html>
 </head>
 <body>`
 
-const managerCard = `<div class="card" style="width: 18rem;">
+const managerCard = (data) =>{
+  htmlTemp +=`<div class="card" style="width: 18rem;">
 <div class="card-body">
   <h5 class="card-title">${data.getName()}</h5>
   <h6 class="card-subtitle mb-2 text-muted"><i class="fas fa-user-tie"></i>${data.getRole()}</h6>
@@ -22,8 +23,10 @@ const managerCard = `<div class="card" style="width: 18rem;">
 </ul>
 </div>
 </div>`
+};
 
-const engineerCard = `<div class="card" style="width: 18rem;">
+const engineerCard = (data) =>{
+  htmlTemp += `<div class="card" style="width: 18rem;">
 <div class="card-body">
   <h5 class="card-title">${data.getName()}</h5>
   <h6 class="card-subtitle mb-2 text-muted"><i class="fas fa-user-tie"></i>${data.getRole()}</h6>
@@ -34,8 +37,9 @@ const engineerCard = `<div class="card" style="width: 18rem;">
 </ul>
 </div>
 </div>`
-
-const internCard = `<div class="card" style="width: 18rem;">
+};
+const internCard = (data) =>{
+  htmlTemp += `<div class="card" style="width: 18rem;">
 <div class="card-body">
   <h5 class="card-title">${data.getName()}</h5>
   <h6 class="card-subtitle mb-2 text-muted"><i class="fas fa-user-tie"></i>${data.getRole()}</h6>
@@ -46,4 +50,11 @@ const internCard = `<div class="card" style="width: 18rem;">
 </ul>
 </div>
 </div>`
+};
 
+module.exports ={
+  htmlTemp,
+  managerCard,
+  engineerCard,
+  internCard
+}
