@@ -1,5 +1,4 @@
-const { it, expect } = require("@jest/globals");
-const { describe } = require("yargs");
+
 const Manager = require("../lib/manager");
 
 describe("Manager", () => {
@@ -17,14 +16,14 @@ describe("Manager", () => {
         it("should return the Email written on the class", () => {
             const winston = new Manager("Winston",4,"winston@gmail.com",5125545554)
 
-            expect(winston.getofficeNumber()).toReturn("5125545554")
+            expect(winston.getofficeNumber()).toEqual("5125545554")
         });
     });
     describe("getRecord", () => {
         it("should return the Manager type written on the class", () => {
             const winston = new Manager("Winston",4,"winston@gmail.com",5125545554)
 
-            expect(winston.getRecord()).toReturn("manager")
+            expect(winston.getRole()).toEqual("Manager")
         });
     });
 })

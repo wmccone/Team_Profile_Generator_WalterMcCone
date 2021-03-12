@@ -1,6 +1,5 @@
-const { it, expect } = require("@jest/globals");
-const { describe } = require("yargs");
-const Employee = require("../lib/engineer");
+
+const Engineer = require("../lib/engineer");
 
 describe("Engineer", () => {
     describe("Initialization", () => {
@@ -10,22 +9,22 @@ describe("Engineer", () => {
             expect(walter.name).toEqual("Walter")
             expect(walter.id).toEqual(15)
             expect(walter.email).toEqual("wmccone@gmail.com")
-            expect(walter.gitHub).toEqual("wmccone")
+            expect(walter.github).toEqual("wmccone")
         });
     });
 
     describe("getGitHub", () => {
         it("should return the Github written on the class", () => {
-            const winston = new Employee("Winston",4,"winston@gmail.com","winstonthedog")
+            const winston = new Engineer("Winston",4,"winston@gmail.com","winstonthedog")
 
-            expect(winston.getGitHub()).toReturn("winstonthedog")
+            expect(winston.getGitHub()).toEqual("winstonthedog")
         });
     });
     describe("getRecord", () => {
-        it("should return the employee type written on the class", () => {
-            const winston = new Employee("Winston",4,"winston@gmail.com","winstonthedog")
+        it("should return the Engineer type written on the class", () => {
+            const winston = new Engineer("Winston",4,"winston@gmail.com","winstonthedog")
 
-            expect(winston.getRecord()).toReturn("Engineer")
+            expect(winston.getRole()).toEqual("Engineer")
         });
     });
 })

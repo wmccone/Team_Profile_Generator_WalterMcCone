@@ -1,6 +1,5 @@
-const { it, expect } = require("@jest/globals");
-const { describe } = require("yargs");
-const Employee = require("../lib/intern");
+
+const Intern = require("../lib/intern");
 
 describe("Intern", () => {
     describe("Initialization", () => {
@@ -18,14 +17,14 @@ describe("Intern", () => {
         it("should return the School written on the class", () => {
             const winston = new Intern("Winston",4,"winston@gmail.com","Puppy Academy")
 
-            expect(winston.getSchool()).toReturn("Puppy Academy")
+            expect(winston.getSchool()).toEqual("Puppy Academy")
         });
     });
     describe("getRecord", () => {
         it("should return the Intern type written on the class", () => {
             const winston = new Intern("Winston",4,"winston@gmail.com","Puppy Academy")
 
-            expect(winston.getRecord()).toReturn("Intern")
+            expect(winston.getRole()).toEqual("Intern")
         });
     });
 })
