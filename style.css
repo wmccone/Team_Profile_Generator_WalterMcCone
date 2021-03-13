@@ -1,0 +1,25 @@
+
+    header {
+        text-align: center;
+        background-color: darkslategray;
+        color: beige;
+        font-size: 25px;
+    
+    }
+    .card-head {
+        background-color: darkslategray;
+        color: beige;
+        text-align: center;
+    }
+    .card {
+        float: left;
+        margin-right: 30px;
+        margin-top: 15px;
+        max-width: 250px;
+        height: 250px;
+    }
+    
+    ul {
+        font-size: 14px;
+    }
+    
