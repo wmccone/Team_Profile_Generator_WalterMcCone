@@ -27,10 +27,10 @@ const managerQuestions = () => {
             message: 'What is the managers email?',
             validate: function (value) {
                 var pass = value.match(
-                  /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i
+                    /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i
                 );
                 if (pass) {
-                  return true;
+                    return true;
                 }
                 return 'Please enter a valid email';
             },
@@ -41,16 +41,16 @@ const managerQuestions = () => {
             message: 'What is the office number for the manager?',
             validate: function (value) {
                 var pass = value.match(
-                  /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/i
+                    /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/i
                 );
                 if (pass) {
-                  return true;
+                    return true;
                 }
                 return 'Please enter a valid phone number';
-              },
+            },
         },
     ])
-    // This will push the manager data that is collected to a class constructor
+        // This will push the manager data that is collected to a class constructor
         .then(data => {
             const teamManager = new Manager(data.name, data.id, data.email, data.officeNumber)
             //pushes the Team manager object to an array
@@ -70,7 +70,7 @@ const employeeType = () => {
             choices: ['engineer', 'intern', 'I am finished, print the team']
         },
     ])
-    // Once the user selects the type of team member they want to add the program will run a series of questions for that employee type.
+        // Once the user selects the type of team member they want to add the program will run a series of questions for that employee type.
         .then(data => {
             switch (data.membertype) {
                 //If the user chooses engineer, ask the engineer employee questions.
@@ -108,10 +108,10 @@ const engineerQuestions = () => {
             message: 'What is the email of the employee?',
             validate: function (value) {
                 var pass = value.match(
-                  /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i
+                    /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i
                 );
                 if (pass) {
-                  return true;
+                    return true;
                 }
                 return 'Please enter a valid email';
             },
@@ -122,7 +122,7 @@ const engineerQuestions = () => {
             message: 'What is the Github username of the engineer?',
         },
     ])
-    // This will push the engineer data that is collected to a class constructor
+        // This will push the engineer data that is collected to a class constructor
         .then(data => {
             const engineer = new Engineer(data.name, data.id, data.email, data.github)
             //pushes the Engineer object to an array
@@ -152,10 +152,10 @@ const internQuestions = () => {
             message: 'What is the email of the employee?',
             validate: function (value) {
                 var pass = value.match(
-                  /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i
+                    /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i
                 );
                 if (pass) {
-                  return true;
+                    return true;
                 }
                 return 'Please enter a valid email';
             },
@@ -183,10 +183,10 @@ const printContent = () => {
     //Pushing the first part of the HTML code to a storage array
     templateArray.push(htmlTemplates.htmlTemp(employeesArray[0].name))
     //Brings the base HTML template over from the HTML template file
-    for (let i = 0; i<employeesArray.length;i++){
+    for (let i = 0; i < employeesArray.length; i++) {
         // let roleData = employeesArray[i].getRole()
-    //This switch will take the Role from each object in the array and run a card builder on it
-        switch(employeesArray[i].getRole()){
+        //This switch will take the Role from each object in the array and run a card builder on it
+        switch (employeesArray[i].getRole()) {
             case "Manager":
                 templateArray.push(htmlTemplates.managerCard(employeesArray[i]))
                 console.log(htmlTemplates.managerCard(employeesArray[i]))
@@ -199,8 +199,8 @@ const printContent = () => {
                 break;
             default:
                 console.log('There was an error with the HTML creation')
-                break; 
-            
+                break;
+
         }
         // return htmlTemp
     }
@@ -216,8 +216,8 @@ const writeFile = () => {
     let fileName = nameArray.join('')
     //this will write the html file to the dist directory and print the content to the file
     fs.writeFile(`./dist/${fileName}team.html`, printContent(), (err) =>
-    err ? console.log(err) : console.log("success")
-);
+        err ? console.log(err) : console.log("success")
+    );
 }
 
 const printCss = () => {
@@ -250,17 +250,17 @@ const printCss = () => {
 
 const writeCss = () => {
     fs.writeFile(`./dist/style.css`, printCss(), (err) =>
-    err ? console.log(err) : console.log("success")
-);
+        err ? console.log(err) : console.log("success")
+    );
 }
 
 
 
 function init() {
-//Welcome message for the user starting the program
+    //Welcome message for the user starting the program
     console.log("Welcome to the Team Profile generator, lets build a team!")
-//The manager questions function is going to start the function
+    //The manager questions function is going to start the function
     managerQuestions()
-    
+
 }
 init()
