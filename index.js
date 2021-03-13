@@ -1,9 +1,7 @@
-const Employee = require('./lib/employee')
 const Manager = require('./lib/manager')
 const Engineer = require('./lib/engineer')
 const Intern = require('./lib/intern')
 const inquirer = require('inquirer');
-const inquirerTemplates = require ('./src/inquirertemplates')
 const htmlTemplates = require('./src/htmltemplate')
 const fs = require('fs')
 
@@ -27,16 +25,34 @@ const managerQuestions = () => {
             type: 'input',
             name: 'email',
             message: 'What is the managers email?',
+            validate: function (value) {
+                var pass = value.match(
+                  /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i
+                );
+                if (pass) {
+                  return true;
+                }
+                return 'Please enter a valid email';
+            },
         },
         {
             type: 'input',
             name: 'officeNumber',
             message: 'What is the office number for the manager?',
+            validate: function (value) {
+                var pass = value.match(
+                  /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/i
+                );
+                if (pass) {
+                  return true;
+                }
+                return 'Please enter a valid phone number';
+              },
         },
     ])
     // This will push the manager data that is collected to a class constructor
         .then(data => {
-            const teamManager = new Manager(data.name, data.id, data.email, data.officenumber)
+            const teamManager = new Manager(data.name, data.id, data.email, data.officeNumber)
             //pushes the Team manager object to an array
             employeesArray.push(teamManager)
             //runs the employee type question that this program revolves around.
@@ -90,6 +106,15 @@ const engineerQuestions = () => {
             type: 'input',
             name: 'email',
             message: 'What is the email of the employee?',
+            validate: function (value) {
+                var pass = value.match(
+                  /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i
+                );
+                if (pass) {
+                  return true;
+                }
+                return 'Please enter a valid email';
+            },
         },
         {
             type: 'input',
@@ -125,6 +150,15 @@ const internQuestions = () => {
             type: 'input',
             name: 'email',
             message: 'What is the email of the employee?',
+            validate: function (value) {
+                var pass = value.match(
+                  /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i
+                );
+                if (pass) {
+                  return true;
+                }
+                return 'Please enter a valid email';
+            },
         },
         {
             type: 'input',
