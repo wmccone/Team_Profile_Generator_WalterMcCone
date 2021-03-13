@@ -1,3 +1,4 @@
+//Creates the starter HTML to begin the file
 const htmlTemp = (data) => {
 return `
 <!DOCTYPE html>
@@ -21,6 +22,7 @@ return `
       <div class="col-md-8">
 `
 }
+//Writes a Manager card to the html
 const managerCard = (data) =>{
  return `
   <div class="card">
@@ -38,7 +40,7 @@ const managerCard = (data) =>{
   </div>
 `
 };
-
+//Writes an Engineer Card to the html
 const engineerCard = (data) =>{
 return `
   <div class="card">
@@ -56,6 +58,8 @@ return `
   </div>
 `
 };
+
+//Writes the intern card to the html
 const internCard = (data) =>{
   return `
   <div class="card">
@@ -73,7 +77,7 @@ const internCard = (data) =>{
   </div>
 `
 };
-
+//wraps up any final html needed for the directory
 const endHtml = () => {
   return `
       </div>
@@ -82,7 +86,7 @@ const endHtml = () => {
   </div>
 </body>`
 }
-
+//Exports all templates to the index file
 module.exports ={
   htmlTemp,
   managerCard,

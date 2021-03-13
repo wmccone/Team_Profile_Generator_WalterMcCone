@@ -1,3 +1,5 @@
+
+//Require all needed files
 const Manager = require('./lib/manager')
 const Engineer = require('./lib/engineer')
 const Intern = require('./lib/intern')
@@ -25,6 +27,7 @@ const managerQuestions = () => {
             type: 'input',
             name: 'email',
             message: 'What is the managers email?',
+            //regex will validate emails
             validate: function (value) {
                 var pass = value.match(
                     /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i
@@ -39,6 +42,7 @@ const managerQuestions = () => {
             type: 'input',
             name: 'officeNumber',
             message: 'What is the office number for the manager?',
+            //regex will validate phone numbers
             validate: function (value) {
                 var pass = value.match(
                     /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/i
@@ -106,6 +110,7 @@ const engineerQuestions = () => {
             type: 'input',
             name: 'email',
             message: 'What is the email of the employee?',
+            //regex will validate emails
             validate: function (value) {
                 var pass = value.match(
                     /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i
@@ -132,7 +137,7 @@ const engineerQuestions = () => {
         });
 
 }
-
+//These questions will prompt the user for questions about an intern employee
 const internQuestions = () => {
 
     inquirer.prompt([
@@ -150,6 +155,7 @@ const internQuestions = () => {
             type: 'input',
             name: 'email',
             message: 'What is the email of the employee?',
+            //regex will validate emails
             validate: function (value) {
                 var pass = value.match(
                     /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i
@@ -201,7 +207,6 @@ const printContent = () => {
                 break;
 
         }
-        // return htmlTemp
     }
     // Collect the html into one template literal
     templateArray.push(htmlTemplates.endHtml())
@@ -218,7 +223,7 @@ const writeFile = () => {
         err ? console.log(err) : console.log("success")
     );
 }
-
+// this is going to print the CSS template to the file
 const printCss = () => {
     return `
     header {
@@ -246,7 +251,7 @@ const printCss = () => {
     }
     `
 }
-
+// This file is going to write a dss file to the dist folder
 const writeCss = () => {
     fs.writeFile(`./dist/style.css`, printCss(), (err) =>
         err ? console.log(err) : console.log("success")

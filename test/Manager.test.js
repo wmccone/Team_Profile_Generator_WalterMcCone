@@ -5,7 +5,7 @@ describe("Manager", () => {
     describe("Initialization", () => {
         it("should create an object with name, id, and email if provided valid arguments", () => {
             const walter = new Manager("Walter",15,"wmccone@gmail.com",5125790164);
-
+            //these should test the constructor values
             expect(walter.name).toEqual("Walter")
             expect(walter.id).toEqual(15)
             expect(walter.email).toEqual("wmccone@gmail.com")
@@ -19,10 +19,11 @@ describe("Manager", () => {
             expect(winston.getofficeNumber()).toEqual(5125545554)
         });
     });
+    //this is going to test the get role functionality
     describe("getRecord", () => {
         it("should return the Manager type written on the class", () => {
             const winston = new Manager("Winston",4,"winston@gmail.com",5125545554)
-
+            //this should return manager
             expect(winston.getRole()).toEqual("Manager")
         });
     });
