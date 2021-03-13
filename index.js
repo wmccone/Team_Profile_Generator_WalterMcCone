@@ -209,9 +209,13 @@ const printContent = () => {
     const finalTemplate = templateArray.join('')
     return finalTemplate
 }
-
+//This function is going to write the file to the distribution folder.
 const writeFile = () => {
-    fs.writeFile(`./dist/${employeesArray[0].name}team.html`, printContent(), (err) =>
+    //this will sanitize the file name so there are no spaces
+    let nameArray = employeesArray[0].name.split(' ')
+    let fileName = nameArray.join('')
+    //this will write the html file to the dist directory and print the content to the file
+    fs.writeFile(`./dist/${fileName}team.html`, printContent(), (err) =>
     err ? console.log(err) : console.log("success")
 );
 }
@@ -253,9 +257,9 @@ const writeCss = () => {
 
 
 function init() {
-//Welcome message
+//Welcome message for the user starting the program
     console.log("Welcome to the Team Profile generator, lets build a team!")
-// prompt user for manager information
+//The manager questions function is going to start the function
     managerQuestions()
     
 }
