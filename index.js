@@ -68,6 +68,7 @@ const employeeType = () => {
                 //If the user chooses the finished option, the program will begin the process of printing the html
                 default:
                     writeFile()
+                    writeCss()
                     break;
             }
         })
@@ -143,31 +144,10 @@ const internQuestions = () => {
 // This function will write the content to HTML
 const printContent = () => {
     //This for loop will iterate through the objects in the employee array
-    // let htmlTemp = `<!DOCTYPE html>
-    // <html lang="en">
-    // <head>
-    //     <meta charset="UTF-8">
-    //     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    //     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    //     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-    //     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
-    //     <title>Employee Directory</title>
-        
-    // </head>
-    // <body>`;
+
     const templateArray = [];
-    templateArray.push(`<!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
-        <title>Employee Directory</title>
-        
-    </head>
-    <body>`)
+    //Pushing the first part of the HTML code to a storage array
+    templateArray.push(htmlTemplates.htmlTemp(employeesArray[0].name))
     //Brings the base HTML template over from the HTML template file
     for (let i = 0; i<employeesArray.length;i++){
         // let roleData = employeesArray[i].getRole()
@@ -191,14 +171,47 @@ const printContent = () => {
         // return htmlTemp
     }
     // Collect the html into one template literal
-    
-    templateArray.push(`</body>`)
+    templateArray.push(htmlTemplates.endHtml())
     const finalTemplate = templateArray.join('')
     return finalTemplate
 }
 
 const writeFile = () => {
-    fs.writeFile(`${employeesArray[0].name}team.html`, printContent(), (err) =>
+    fs.writeFile(`./dist/${employeesArray[0].name}team.html`, printContent(), (err) =>
+    err ? console.log(err) : console.log("success")
+);
+}
+
+const printCss = () => {
+    return `
+    header {
+        text-align: center;
+        background-color: darkslategray;
+        color: beige;
+        font-size: 25px;
+    
+    }
+    .card-head {
+        background-color: darkslategray;
+        color: beige;
+        text-align: center;
+    }
+    .card {
+        float: left;
+        margin-right: 30px;
+        margin-top: 15px;
+        max-width: 250px;
+        height: 250px;
+    }
+    
+    ul {
+        font-size: 14px;
+    }
+    `
+}
+
+const writeCss = () => {
+    fs.writeFile(`./dist/style.css`, printCss(), (err) =>
     err ? console.log(err) : console.log("success")
 );
 }
@@ -210,10 +223,6 @@ function init() {
     console.log("Welcome to the Team Profile generator, lets build a team!")
 // prompt user for manager information
     managerQuestions()
- 
-
-// prompt user for name of next employee
-// prompt user for 
     
 }
 init()
