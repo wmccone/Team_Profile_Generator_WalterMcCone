@@ -31,7 +31,7 @@ const managerCard = (data) =>{
     <div class="card-body">
       <ul class="list-group">
         <li class="list-group-item">ID: ${data.getId()}</li>
-        <li class="list-group-item">Email: <a href="mailto:${data.getEmail()}"> ${data.getEmail()}</a></li>
+        <li class="list-group-item">Email: <a href="mailto:${data.getEmail()}" target="_blank"> ${data.getEmail()}</a></li>
         <li class="list-group-item">Office Number: ${data.getofficeNumber()}</li>
       </ul>
     </div>
@@ -49,8 +49,8 @@ return `
     <div class="card-body">
       <ul class="list-group">
         <li class="list-group-item">ID: ${data.getId()}</li>
-        <li class="list-group-item">Email:<a href="mailto:${data.getEmail()}"> ${data.getEmail()}</a></li>
-        <li class="list-group-item">Github: <a href="https://github.com/${data.getGitHub()}">${data.getGitHub()}</a></li>
+        <li class="list-group-item">Email:<a href="mailto:${data.getEmail()}" target="_blank"> ${data.getEmail()}</a></li>
+        <li class="list-group-item">Github: <a href="https://github.com/${data.getGitHub()}" target="_blank">${data.getGitHub()}</a></li>
       </ul>
     </div>
   </div>
@@ -66,7 +66,7 @@ const internCard = (data) =>{
     <div class="card-body">
       <ul class="list-group">
         <li class="list-group-item">ID: ${data.getId()}</li>
-        <li class="list-group-item">Email: <a href="mailto:${data.getEmail()}"> ${data.getEmail()}</a></li>
+        <li class="list-group-item">Email: <a href="mailto:${data.getEmail()}" target="_blank"> ${data.getEmail()}</a></li>
         <li class="list-group-item">School: ${data.getSchool()}</li>
       </ul>
     </div>

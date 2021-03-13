@@ -189,7 +189,6 @@ const printContent = () => {
         switch (employeesArray[i].getRole()) {
             case "Manager":
                 templateArray.push(htmlTemplates.managerCard(employeesArray[i]))
-                console.log(htmlTemplates.managerCard(employeesArray[i]))
                 break;
             case "Engineer":
                 templateArray.push(htmlTemplates.engineerCard(employeesArray[i]))
